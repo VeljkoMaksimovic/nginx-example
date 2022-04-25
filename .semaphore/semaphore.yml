@@ -27,7 +27,8 @@ blocks:
         - name: Run
           commands:
             - chmod +x consumer-service.bin
-            - ./consumer-service.bin
+            - ./consumer-service.bin &
+            - sleep 5
             - 'curl -v http://localhost:${PORT}/'
       env_vars:
         - name: PORT
