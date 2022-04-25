@@ -14,3 +14,16 @@ blocks:
             - cd consumer-service
             - 'go get #Update dependencies'
             - go build -o consumer-service.bin
+      epilogue:
+        on_pass:
+          commands:
+            - artifact push workflow consumer/service.bin
+  - name: 'Block #2'
+    task:
+      prologue:
+        commands:
+          - artifact pull workflow consumer-service.bin
+      jobs:
+        - name: Run
+          commands:
+            - ls
