@@ -26,7 +26,8 @@ blocks:
       jobs:
         - name: Run
           commands:
-            - sudo ./consumer-service.bin
+            - chmod +x consumer-service.bin
+            - ./consumer-service.bin
             - 'curl -v http://localhost:${PORT}/'
       env_vars:
         - name: PORT
