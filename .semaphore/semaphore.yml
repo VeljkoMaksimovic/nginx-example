@@ -18,7 +18,8 @@ blocks:
         on_pass:
           commands:
             - artifact push workflow consumer-service.bin
-  - name: 'Block #2'
+    dependencies: []
+  - name: Run the service and curl it
     task:
       prologue:
         commands:
@@ -33,3 +34,36 @@ blocks:
       env_vars:
         - name: PORT
           value: '8080'
+    dependencies:
+      - Consumer Service
+  - name: Kitchen Service
+    dependencies: []
+    task:
+      epilogue:
+        on_pass:
+          commands:
+            - artifact push workflow kitchen-service.bin
+      jobs:
+        - name: Build
+          commands:
+            - checkout
+            - cd kitchen-service
+            - 'go get #Update dependencies'
+            - go build -o kitchen-service.bin
+  - name: Run the kitchen service
+    dependencies:
+      - Kitchen Service
+    task:
+      env_vars:
+        - name: PORT
+          value: '8090'
+      prologue:
+        commands:
+          - artifact pull workflow kitchen-service.bin
+      jobs:
+        - name: Run
+          commands:
+            - chmod +x kitchen-service.bin
+            - ./kitchen-service.bin &
+            - sleep 5
+            - 'curl -v http://localhost:${PORT}/'
