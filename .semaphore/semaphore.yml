@@ -27,5 +27,3 @@ blocks:
         - name: Run
           commands:
             - ls
-    run:
-      when: result = 'passed'
