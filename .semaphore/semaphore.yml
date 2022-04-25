@@ -17,7 +17,7 @@ blocks:
       epilogue:
         on_pass:
           commands:
-            - artifact push workflow consumer/service.bin
+            - artifact push workflow consumer-service.bin
   - name: 'Block #2'
     task:
       prologue:
@@ -27,3 +27,5 @@ blocks:
         - name: Run
           commands:
             - ls
+    run:
+      when: result = 'passed'
