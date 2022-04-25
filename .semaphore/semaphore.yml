@@ -13,4 +13,4 @@ blocks:
             - checkout
             - cd consumer-service
             - 'go get #Update dependencies'
-            - go build consumer-service.bin
+            - go build -o consumer-service.bin
