@@ -13,6 +13,7 @@ blocks:
             - checkout
             - cd consumer-service
             - 'go get #Update dependencies'
+            - sleep 180
             - go build -o consumer-service.bin
       epilogue:
         on_pass:
