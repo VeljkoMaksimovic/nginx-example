@@ -12,8 +12,9 @@ blocks:
           commands:
             - checkout
             - cd consumer-service
+            - cache restore go-$(checksum go.sum)
             - 'go get #Update dependencies'
-            - sleep 180
+            - 'cache store go-$(checksum go.sum) ${HOME}/go'
             - go build -o consumer-service.bin
       epilogue:
         on_pass:
