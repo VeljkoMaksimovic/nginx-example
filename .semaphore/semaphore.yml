@@ -26,4 +26,8 @@ blocks:
       jobs:
         - name: Run
           commands:
-            - ls
+            - ./consumer-service.bin
+            - 'curl -v http://localhost:${PORT}/'
+      env_vars:
+        - name: PORT
+          value: '8080'
