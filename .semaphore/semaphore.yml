@@ -13,7 +13,7 @@ blocks:
             - checkout
             - cd consumer-service
             - 'cache restore #go-$(checksum go.sum)'
-            - go sleep 180
+            - sleep 180
             - 'go get #Update dependencies'
             - 'cache store #go-$(checksum go.sum) ${HOME}/go'
             - go build -o consumer-service.bin
