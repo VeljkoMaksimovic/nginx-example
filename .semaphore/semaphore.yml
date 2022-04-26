@@ -15,10 +15,9 @@ blocks:
             - cache list
             - cache restore go-$(checksum go.sum)
             - ls ~/go
-            - 'go get #Update dependencies'
-            - ls ~/go
-            - 'cache store go-$(checksum go.sum) ${HOME}/go'
+            - '#go get #Update dependencies'
             - go build -o consumer-service.bin
+            - 'cache store go-$(checksum go.sum) ${HOME}/go'
       epilogue:
         on_pass:
           commands:
