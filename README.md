@@ -1,4 +1,5 @@
 # Microservices Demo
+# Microservices Demo
 
 Restaurant application implemented in GO. NGINX is used as
 API Gateway and Docker DNS service as service discovery. 
