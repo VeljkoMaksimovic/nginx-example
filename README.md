@@ -11,3 +11,4 @@ In order to destroy infrastructure run the following command:
 
 tst
 tst
+tst
