@@ -8,3 +8,7 @@ In order to set up infrastructure run the following command:
 
 In order to destroy infrastructure run the following command:
 `docker-compose down -v`.
+
+tst
+tst
+tst
