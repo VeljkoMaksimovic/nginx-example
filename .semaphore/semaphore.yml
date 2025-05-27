@@ -11,6 +11,9 @@ blocks:
         - commands:
             - echo "TEST"
             - echo $SEMAPHORE_GIT_REF_TYPE
-            - if [ "$SEMAPHORE_GIT_REF_TYPE" = "pull-request" ]; then export SEMAPHORE_JOB_RESULT=passed; return 130; else export SEMAPHORE_JOB_RESULT=failed; return 130; fi
+            - 'if [ "$SEMAPHORE_GIT_REF_TYPE" = "pull-request" ]; then export SEMAPHORE_JOB_RESULT=passed; return 130; else export SEMAPHORE_JOB_RESULT=failed; return 130; fi'
           name: test
     dependencies: []
+promotions:
+  - name: Promotion 1
+    pipeline_file: pipeline_2.yml
