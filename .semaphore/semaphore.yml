@@ -10,5 +10,6 @@ blocks:
       jobs:
         - commands:
             - echo "TEST"
+            - echo $SEMAPHORE_GIT_REF_TYPE
           name: test
     dependencies: []
