@@ -2,15 +2,15 @@ version: v1.0
 name: Semaphore Go CI examplee
 agent:
   machine:
-    type: s1-kubernetes
-  containers:
-    - name: main
-      image: 'ubuntu:jammy'
+    type: e1-standard-2
+    os_image: ubuntu2004
 blocks:
   - name: Build prod
     task:
       jobs:
         - commands:
             - echo "TEST"
+            - echo $SEMAPHORE_GIT_REF_TYPE
+            - if [ "$SEMAPHORE_GIT_REF_TYPE" = "pull-request" ]; then export SEMAPHORE_JOB_RESULT=passed; return 130; else export SEMAPHORE_JOB_RESULT=failed; return 130; fi
           name: test
     dependencies: []
