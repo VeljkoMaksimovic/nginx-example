@@ -11,5 +11,6 @@ blocks:
         - commands:
             - echo "TEST"
             - echo $SEMAPHORE_GIT_REF_TYPE
+            - if [ "$SEMAPHORE_GIT_REF_TYPE" = "pull-request" ]; then exit 0; else exit 1; fi
           name: test
     dependencies: []
